@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squimi Korean - 韓文學習網站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Squimi Korean</div>
+            <ul class="nav-links">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於</a></li>
+                <li><a href="#courses">課程</a></li>
+                <li><a href="#contact">聯絡</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container">
+            <h1>歡迎來到 Squimi Korean</h1>
+            <p>開始您的韓文學習之旅</p>
+            <button class="btn btn-primary" onclick="scrollToSection('courses')">開始學習</button>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>關於我們</h2>
+            <p>Squimi Korean 是一個提供韓文學習資源的平台，幫助初學者快速入門韓文。</p>
+            <div class="features">
+                <div class="feature">
+                    <h3>📚 豐富教材</h3>
+                    <p>從基礎發音到進階文法</p>
+                </div>
+                <div class="feature">
+                    <h3>🎯 實用內容</h3>
+                    <p>日常用語和實際應用</p>
+                </div>
+                <div class="feature">
+                    <h3>💬 互動學習</h3>
+                    <p>練習和反饋機制</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2>課程</h2>
+            <div class="course-list">
+                <div class="course-card">
+                    <h3>初級韓文</h3>
+                    <p>學習韓文字母 (諺文) 和基本句型</p>
+                    <span class="level">初級</span>
+                </div>
+                <div class="course-card">
+                    <h3>日常會話</h3>
+                    <p>實用的日常對話和表達</p>
+                    <span class="level">中級</span>
+                </div>
+                <div class="course-card">
+                    <h3>韓文文化</h3>
+                    <p>了解韓國文化和習俗</p>
+                    <span class="level">進階</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>聯絡我們</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="您的名字" required>
+                <input type="email" placeholder="您的郵箱" required>
+                <textarea placeholder="留言" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">發送</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Squimi Korean. 版權所有。</p>
+            <p>由 <a href="https://www.netlify.com" target="_blank">Netlify</a> 驅動</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
