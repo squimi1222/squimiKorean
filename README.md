@@ -1,78 +1,86 @@
-# Squimi Korean - 韓文學習網站
+# 한국어 학습 App · 部署說明
 
-## 概述
-
-Squimi Korean 是一個靜態網站，提供韓文學習資源和課程信息。本網站由 Netlify 驅動。
-
-## 功能
-
-- 📚 豐富的教學內容
-- 🎯 實用的日常用語
-- 💬 互動學習體驗
-- 📱 響應式設計
-- ⚡ 快速載入
-
-## 文件結構
+## 資料夾結構
 
 ```
-squimiKorean/
-├── index.html       # 主頁面
-├── styles.css       # 樣式表
-├── script.js        # JavaScript 代碼
-├── netlify.toml     # Netlify 配置
-└── README.md        # 本文件
+korean-app/
+├── index.html      ← 主程式（整個 App）
+├── manifest.json   ← PWA 設定
+├── sw.js           ← Service Worker（離線支援）
+├── icon-192.svg    ← App 圖示（小）
+└── icon-512.svg    ← App 圖示（大）
 ```
 
-## 本地開發
+---
 
-1. 克隆倉庫：
-   ```bash
-   git clone https://github.com/squimi1222/squimiKorean.git
-   cd squimiKorean
-   ```
+## 路徑 A · 上線 Netlify（推薦，今天就能用）
 
-2. 在���地開啟網站（使用任何本地伺服器）：
-   ```bash
-   # 使用 Python
-   python -m http.server 8000
-   
-   # 或使用 Node.js
-   npx http-server
-   ```
+### 步驟 1 · 註冊 Netlify
+前往 https://app.netlify.com → Sign up（用 GitHub 或 Email 免費註冊）
 
-3. 在瀏覽器中打開 `http://localhost:8000`
+### 步驟 2 · 部署
+1. 登入後，在首頁找到 **「Deploy manually」** 區塊
+2. 把整個 `korean-app` 資料夾**直接拖拉**進去
+3. 等約 30 秒，Netlify 會給你一個網址，例如：
+   `https://elegant-goldstine-abc123.netlify.app`
 
-## 部署到 Netlify
+### 步驟 3 · 自訂網址（可選）
+- 在 Netlify 後台 → Site settings → Change site name
+- 例如改成 `korean-vocab.netlify.app`
 
-該倉庫已連接到 Netlify。任何推送到 `main` 分支的更改都會自動部署。
+### 步驟 4 · iOS 加入主畫面
+1. 在 iPhone Safari 打開你的網址
+2. 點底部的 **分享** 按鈕（方框加箭頭）
+3. 選 **「加入主畫面」**
+4. 點右上角 **加入**
+5. App 圖示會出現在主畫面，像原生 App 一樣！
 
-**網站 URL：** https://squimikorean.netlify.app
+---
 
-## 如何修改網站
+## 路徑 B · 上架 App Store（進階，需要 Mac）
 
-### 修改內容
+需要條件：
+- Mac 電腦（M1/M2/M3 皆可）
+- Apple Developer 帳號（每年 USD $99）
+- Xcode（免費）
+- Node.js
 
-編輯 `index.html` 來更改頁面內容。
+### 安裝 Capacitor 步驟
 
-### 修改樣式
+```bash
+# 在終端機執行
+npm init -y
+npm install @capacitor/core @capacitor/cli @capacitor/ios
 
-編輯 `styles.css` 來自定義網站的外觀。
+# 初始化
+npx cap init "韓文學習" "com.yourname.koreanvocab" --web-dir "."
 
-### 添加功能
+# 加入 iOS 平台
+npx cap add ios
 
-編輯 `script.js` 來添加互動功能。
+# 同步
+npx cap sync ios
 
-## 技術棧
+# 用 Xcode 打開
+npx cap open ios
+```
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Netlify (託管和部署)
+接著在 Xcode 設定 Bundle ID、簽名，然後 Archive → 上傳到 App Store Connect。
 
-## 許可證
+---
 
-MIT License - 詳見 LICENSE 文件
+## 資料備份
 
-## 聯絡方式
+- 資料存在瀏覽器的 `localStorage`，清除瀏覽器資料會消失
+- 建議定期點 App 右上角的 **匯出** 按鈕，下載 JSON 備份
+- 換手機或換瀏覽器時，用 **匯入** 按鈕載入備份
 
-有任何問題或建議，請通過網站的聯絡表單與我們聯繫。
+---
+
+## 後續功能計畫
+
+- [ ] 圖片欄位（URL 或上傳）
+- [ ] 間隔複習（Spaced Repetition）
+- [ ] 語法教學頁面
+- [ ] 隨機抽卡複習模式
+- [ ] 連結 Telegram 韓文教師頻道
